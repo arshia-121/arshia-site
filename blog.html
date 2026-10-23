@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light" data-accent="indigo">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>بلاگ | عرشیا دانش‌آرا</title>
+  <meta name="description" content="بلاگ عرشیا دانش‌آرا — به‌زودی.">
+  <meta name="author" content="Arshia Danesh Ara">
+  <meta name="theme-color" content="#667eea">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="بلاگ | عرشیا دانش‌آرا">
+  <meta property="og:description" content="نوشته‌ها به‌زودی.">
+  <meta property="og:image" content="assets/img/og-cover.png">
+  <meta property="og:locale" content="fa_IR">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/card.css">
+  <script>
+    (function () {
+      document.documentElement.classList.add("js");
+      try {
+        var root = document.documentElement;
+        var store = window.localStorage;
+        var lang = store.getItem("arshia.lang") === "en" ? "en" : "fa";
+        var theme = store.getItem("arshia.theme");
+        if (theme !== "light" && theme !== "dark") theme = "light";
+        var accent = store.getItem("arshia.accent") || "indigo";
+        root.lang = lang;
+        root.dir = lang === "fa" ? "rtl" : "ltr";
+        root.dataset.theme = theme;
+        root.dataset.accent = accent;
+      } catch (error) { /* no storage available */ }
+    })();
+  </script>
+</head>
+<body data-page="blog">
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">پرش به محتوای اصلی</a>
+
+  <div class="site-wrap">
+    <header class="profile-head">
+      <div class="profile-tools">
+        <button type="button" class="icon-btn lang-btn" data-toggle-lang data-i18n-aria="a11y.lang" aria-label="تغییر زبان سایت">EN</button>
+      </div>
+
+      <div class="avatar" aria-hidden="true">👦</div>
+      <a class="profile-name" href="index.html" data-i18n="profile.name">عرشیا</a>
+      <p class="profile-tagline" data-i18n="profile.tagline">دانش‌آموز پایه اول متوسطه</p>
+
+      <nav class="nav" id="site-nav" aria-label="ناوبری اصلی">
+        <a href="index.html" data-nav="home" data-i18n="nav.home">خانه</a>
+        <a href="shop.html" data-nav="shop" data-i18n="nav.shop">فروشگاه</a>
+        <a href="blog.html" data-nav="blog" data-i18n="nav.blog">بلاگ</a>
+      </nav>
+    </header>
+
+    <main class="card-body" id="main">
+      <section class="card-section">
+        <h1 class="page-heading"><span aria-hidden="true">📝</span><span data-i18n="blog.title">نوشته‌ها</span></h1>
+        <div class="coming-soon">
+          <div class="coming-icon" aria-hidden="true">🚧</div>
+          <h2 class="coming-title" data-i18n="blog.comingSoonTitle">به زودی</h2>
+          <p data-i18n="blog.comingSoonText">نوشته‌ها و یادداشت‌ها در حال آماده‌سازی هستند. این بخش به‌زودی باز می‌شود.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="card-footer">
+      <div>© <span data-year>۱۴۰۵</span> — <span data-i18n="footer.madeBy">ساخته شده با ❤️ توسط عرشیا دانش‌آرا</span></div>
+      <div class="made-with" data-i18n="footer.powered">تولید شده با DeepSeek</div>
+    </footer>
+  </div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
