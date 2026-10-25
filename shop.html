@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="assets/css/card.css">
+  
   <script>
     (function () {
       document.documentElement.classList.add("js");
@@ -28,6 +29,7 @@
       } catch (error) { /* no storage available */ }
     })();
   </script>
+
   <style>
     /* استایل اختصاصی برای این ۳ کارت که دقیقا مثل عکس باشه */
     .shop-grid {
@@ -105,58 +107,56 @@
     .shop-btn.disabled { background: #f1f5f9; color: #94a3b8; cursor: not-allowed; }
   </style>
 </head>
-<body data-page="home">
+<body data-page="shop">
   <a class="skip-link" href="#main">پرش به محتوای اصلی</a>
 
   <div class="site-wrap">
-    <!-- هدر اصلی سایت خودت (دقیقا کپی شده از index.html) -->
+    <!-- هدر اصلی سایت -->
     <header class="profile-head">
       <div class="profile-tools">
-        <button type="button" class="icon-btn lang-btn">EN</button>
+        <button type="button" class="icon-btn lang-btn" data-toggle-lang>EN</button>
       </div>
-
       <div class="avatar" aria-hidden="true">👦</div>
-      <h1 class="profile-name">عرشیا</h1>
-      <p class="profile-tagline">دانش‌آموز پایه اول متوسطه</p>
-
+      <h1 class="profile-name" data-i18n="profile.name">عرشیا</h1>
+      <p class="profile-tagline" data-i18n="profile.tagline">دانش‌آموز پایه اول متوسطه</p>
       <nav class="nav" id="site-nav">
-        <a href="index.html">خانه</a>
-        <a href="shop.html" style="background: white; color: #1e1b4b;">فروشگاه</a>
-        <a href="blog.html">بلاگ</a>
+        <a href="index.html" data-nav="home" data-i18n="nav.home">خانه</a>
+        <a href="shop.html" data-nav="shop" style="background: white; color: #1e1b4b;" data-i18n="nav.shop">فروشگاه</a>
+        <a href="blog.html" data-nav="blog" data-i18n="nav.blog">بلاگ</a>
       </nav>
     </header>
 
     <main class="card-body" id="main">
       <section class="card-section">
         <div class="card-section-head">
-          <h2 style="color: #4c1d95;">🛍️ فروشگاه برنامه‌ها</h2>
-          <a class="card-link" href="index.html">بازگشت به خانه</a>
+          <h2 data-i18n="home.programsTitle" style="color: #4c1d95;">🛍️ فروشگاه برنامه‌ها</h2>
+          <a class="card-link" href="index.html" data-i18n="nav.home">بازگشت به خانه</a>
         </div>
         <p style="color: #64748b; margin-bottom: 20px; font-size: 0.95rem;">
           پک آموزش ۱۴ درسی پایتون رایگان است و با یک کلیک دانلود می‌شود. دو برنامه‌ی دیگر هم به‌زودی اضافه می‌شوند.
         </p>
 
-        <!-- گرید ۳ کارت (دقیقا مثل عکس) -->
+        <!-- گرید ۳ کارت -->
         <div class="shop-grid">
           
           <!-- کارت ۱: پایتون -->
           <div class="shop-card">
             <div class="shop-card-top">
               <h3 class="shop-card-num">۱۴</h3>
-              <span class="shop-badge">رایگان</span>
+              <span class="shop-badge" data-i18n="shop.free">رایگان</span>
             </div>
             <div class="shop-card-body">
-              <h4 class="shop-card-title">پک آموزش ۱۴ درسی پایتون</h4>
-              <p class="shop-card-desc">۱۴ درس پایتون؛ از صفر تا ساختن اولین برنامه</p>
+              <h4 class="shop-card-title" data-i18n="shop.pyTitle">پک آموزش ۱۴ درسی پایتون</h4>
+              <p class="shop-card-desc" data-i18n="shop.pyDesc">۱۴ درس پایتون؛ از صفر تا ساختن اولین برنامه</p>
               <div class="shop-tags">
-                <span class="shop-tag">آموزش</span>
-                <span class="shop-tag">پایتون</span>
+                <span class="shop-tag" data-i18n="shop.tagEdu">آموزش</span>
+                <span class="shop-tag">Python</span>
               </div>
               <div class="shop-price-row">
-                <span>۰ تومان</span>
-                <span style="color: #3b82f6; cursor: pointer;">جزئیات</span>
+                <span data-i18n="shop.priceZero">۰ تومان</span>
+                <span style="color: #3b82f6; cursor: pointer;" data-i18n="shop.details">جزئیات</span>
               </div>
-              <a href="https://github.com/arshia-121/arshia-site/releases/download/v1/Learn-Python.exe" class="shop-btn">⬇ دانلود پک</a>
+              <a href="https://github.com/arshia-121/arshia-site/releases/download/v1/Learn-Python.exe" class="shop-btn" data-i18n="shop.dlPy">⬇ دانلود پک</a>
             </div>
           </div>
 
@@ -164,20 +164,20 @@
           <div class="shop-card">
             <div class="shop-card-top">
               <h3 class="shop-card-num">C++</h3>
-              <span class="shop-badge">رایگان</span>
+              <span class="shop-badge" data-i18n="shop.free">رایگان</span>
             </div>
             <div class="shop-card-body">
-              <h4 class="shop-card-title">دوره آموزش C++</h4>
-              <p class="shop-card-desc">یادگیری زبان قدرتمند C++ با کامپایلر آنلاین</p>
+              <h4 class="shop-card-title" data-i18n="shop.cppTitle">دوره آموزش C++</h4>
+              <p class="shop-card-desc" data-i18n="shop.cppDesc">یادگیری زبان قدرتمند C++ با کامپایلر آنلاین</p>
               <div class="shop-tags">
-                <span class="shop-tag">برنامه‌نویسی</span>
+                <span class="shop-tag" data-i18n="shop.tagProg">برنامه‌نویسی</span>
                 <span class="shop-tag">C++</span>
               </div>
               <div class="shop-price-row">
-                <span>۰ تومان</span>
-                <span style="color: #3b82f6; cursor: pointer;">جزئیات</span>
+                <span data-i18n="shop.priceZero">۰ تومان</span>
+                <span style="color: #3b82f6; cursor: pointer;" data-i18n="shop.details">جزئیات</span>
               </div>
-              <a href="https://github.com/arshia-121/arshia-site/releases/download/cpp-v1/LearnCpp_Full.exe" class="shop-btn">⬇ دانلود برنامه</a>
+              <a href="https://github.com/arshia-121/arshia-site/releases/download/cpp-v1/LearnCpp_Full.exe" class="shop-btn" data-i18n="shop.dlCpp">⬇ دانلود برنامه</a>
             </div>
           </div>
 
@@ -185,20 +185,20 @@
           <div class="shop-card">
             <div class="shop-card-top">
               <h3 class="shop-card-num" style="color: #94a3b8;">HTML</h3>
-              <span class="shop-badge soon">به زودی</span>
+              <span class="shop-badge soon" data-i18n="shop.soon">به زودی</span>
             </div>
             <div class="shop-card-body">
-              <h4 class="shop-card-title">دوره آموزش HTML</h4>
-              <p class="shop-card-desc">یادگیری زبان پایه وب برای ساخت صفحات سایت</p>
+              <h4 class="shop-card-title" data-i18n="shop.htmlTitle">دوره آموزش HTML</h4>
+              <p class="shop-card-desc" data-i18n="shop.htmlDesc">یادگیری زبان پایه وب برای ساخت صفحات سایت</p>
               <div class="shop-tags">
-                <span class="shop-tag">وب</span>
+                <span class="shop-tag" data-i18n="shop.tagWeb">وب</span>
                 <span class="shop-tag">HTML</span>
               </div>
               <div class="shop-price-row">
-                <span>۰ تومان</span>
-                <span style="color: #94a3b8;">جزئیات</span>
+                <span data-i18n="shop.priceZero">۰ تومان</span>
+                <span style="color: #94a3b8;" data-i18n="shop.details">جزئیات</span>
               </div>
-              <div class="shop-btn disabled">به زودی</div>
+              <div class="shop-btn disabled" data-i18n="shop.soon">به زودی</div>
             </div>
           </div>
 
@@ -207,9 +207,13 @@
     </main>
 
     <footer class="card-footer">
-      <div>© <span data-year>۱۴۰۵</span> — ساخته شده با ❤️ توسط عرشیا دانش‌آرا</div>
-      <div class="made-with">تولید شده با DeepSeek</div>
+      <div>© <span data-year>۱۴۰۵</span> — <span data-i18n="footer.madeBy">ساخته شده با ❤️ توسط عرشیا دانش‌آرا</span></div>
+      <div class="made-with" data-i18n="footer.powered">تولید شده با DeepSeek</div>
     </footer>
   </div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/app.js"></script>
 </body>
 </html>
