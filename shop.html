@@ -8,41 +8,67 @@
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="assets/css/card.css">
+  
   <style>
     body {
       font-family: 'Vazirmatn', sans-serif;
-      background-color: #f0f4f1;
+      background-color: #f8f9fc; /* رنگ پس زمینه ملایم */
       margin: 0;
       padding: 0;
     }
     
-    /* تنظیمات گرید کارت‌ها */
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
     }
 
-    /* استایل دقیق کارت‌ها بر اساس عکس تو */
+    /* هدر بالای صفحه */
+    .shop-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 15px;
+    }
+
+    /* تنظیمات گرید به صورت ۳ ستون ثابت (دقیقا مثل عکس) */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    /* ریسپانسیو برای موبایل (که توی گوشی زیر هم برن) */
+    @media (max-width: 900px) {
+      .product-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .product-grid { grid-template-columns: 1fr; }
+    }
+
+    /* استایل دقیق کارت‌ها */
     .product-card {
       background: #fff;
       border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
       display: flex;
       flex-direction: column;
-      border: 1px solid #eaeaea;
+      border: 1px solid #f1f1f1;
     }
 
     /* بخش بالایی کارت (رنگ بنفش روشن) */
     .card-top {
-      background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
-      padding: 20px;
+      background: #f4effc;
+      padding: 30px 20px;
       position: relative;
-      height: 100px;
+      text-align: center;
+      height: 120px;
       display: flex;
       align-items: center;
+      justify-content: center;
       overflow: hidden;
     }
     
@@ -54,25 +80,25 @@
       right: -50px;
       width: 150px;
       height: 150px;
-      background: rgba(255,255,255,0.4);
+      background: rgba(255,255,255,0.5);
       border-radius: 50%;
     }
     .card-top::after {
       content: '';
       position: absolute;
-      bottom: -30px;
+      bottom: -40px;
       left: -20px;
-      width: 100px;
-      height: 100px;
-      background: rgba(255,255,255,0.2);
+      width: 120px;
+      height: 120px;
+      background: rgba(255,255,255,0.3);
       border-radius: 50%;
     }
 
-    /* عدد یا اسم بزرگ سمت راست */
+    /* متن بزرگ وسط کارت */
     .card-num {
-      font-size: 2.8rem;
+      font-size: 3rem;
       font-weight: 900;
-      color: #4c1d95;
+      color: #5b21b6;
       margin: 0;
       z-index: 1;
       line-height: 1;
@@ -81,21 +107,21 @@
     /* برچسب رایگان / به زودی */
     .card-badge {
       position: absolute;
-      top: 20px;
-      left: 20px;
-      background: #5b21b6;
+      top: 15px;
+      right: 15px;
+      background: #6d28d9;
       color: white;
-      padding: 4px 12px;
+      padding: 4px 14px;
       border-radius: 20px;
       font-size: 0.8rem;
       font-weight: bold;
       z-index: 1;
     }
-    .card-badge.soon { background: #6b7280; }
+    .card-badge.soon { background: #94a3b8; }
 
     /* بخش پایینی کارت (سفید) */
     .card-bottom {
-      padding: 20px;
+      padding: 25px 20px;
       display: flex;
       flex-direction: column;
       flex: 1;
@@ -104,16 +130,17 @@
 
     .card-title {
       font-size: 1.1rem;
-      font-weight: 700;
+      font-weight: 800;
       color: #1e293b;
-      margin: 0 0 8px 0;
+      margin: 0 0 10px 0;
     }
 
     .card-desc {
       font-size: 0.85rem;
       color: #64748b;
-      margin-bottom: 15px;
-      line-height: 1.5;
+      margin-bottom: 20px;
+      line-height: 1.6;
+      flex: 1;
     }
 
     /* تگ‌ها */
@@ -121,45 +148,29 @@
       display: flex;
       justify-content: center;
       gap: 8px;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
     .tag {
-      background: #f3e8ff;
-      color: #6d28d9;
+      background: #f1f5f9;
+      color: #475569;
       padding: 4px 12px;
       border-radius: 8px;
       font-size: 0.8rem;
       font-weight: 500;
     }
 
-    /* ردیف قیمت و جزئیات */
-    .card-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 15px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: #4c1d95;
-    }
-    .meta-link {
-      color: #3b82f6;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
     /* دکمه دانلود بنفش */
     .btn-dl {
       display: block;
       width: 100%;
-      padding: 12px;
+      padding: 14px;
       background: #6d28d9;
       color: white;
       text-align: center;
       text-decoration: none;
       border-radius: 12px;
-      font-weight: 700;
-      font-size: 0.95rem;
+      font-weight: 800;
+      font-size: 1rem;
       transition: background 0.2s;
       box-sizing: border-box;
     }
@@ -167,31 +178,30 @@
     
     /* دکمه غیرفعال (به زودی) */
     .btn-dl.disabled {
-      background: #fff;
+      background: #f1f5f9;
       color: #94a3b8;
-      border: 1px solid #e2e8f0;
       cursor: not-allowed;
     }
   </style>
 </head>
 <body data-page="shop">
-  <div class="site-wrap" style="max-width: 1000px; margin: 0 auto; padding: 20px;">
+  <div class="container">
     
     <!-- هدر بالای صفحه -->
-    <header style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 2px solid #e5e7eb; padding-bottom: 15px;">
-      <h2 style="color: #4c1d95; font-size: 1.5rem; margin: 0; display: flex; align-items: center; gap: 10px;">
+    <header class="shop-header">
+      <h2 style="color: #5b21b6; font-size: 1.5rem; margin: 0; display: flex; align-items: center; gap: 10px;">
         🛍️ برنامه‌های من
       </h2>
-      <a href="index.html" style="color: #64748b; text-decoration: none; font-size: 0.9rem;">همه برنامه‌ها</a>
+      <a href="index.html" style="color: #64748b; text-decoration: none; font-size: 0.95rem;">همه برنامه‌ها</a>
     </header>
 
-    <!-- گرید کارت‌ها -->
+    <!-- گرید ۳ ستونه کارت‌ها -->
     <div class="product-grid">
       
       <!-- کارت ۱: پایتون -->
       <div class="product-card">
         <div class="card-top">
-          <h3 class="card-num">14</h3>
+          <h3 class="card-num">۱۴</h3>
           <span class="card-badge">رایگان</span>
         </div>
         <div class="card-bottom">
@@ -200,10 +210,6 @@
           <div class="card-tags">
             <span class="tag">آموزش</span>
             <span class="tag">پایتون</span>
-          </div>
-          <div class="card-meta">
-            <span>۰ تومان</span>
-            <a href="#" class="meta-link">جزئیات</a>
           </div>
           <a href="https://github.com/arshia-121/arshia-site/releases/download/v1/Learn-Python.exe" class="btn-dl">⬇ دانلود پک</a>
         </div>
@@ -217,23 +223,19 @@
         </div>
         <div class="card-bottom">
           <h4 class="card-title">دوره آموزش C++</h4>
-          <p class="card-desc">یادگیری زبان C++ با کامپایلر آنلاین و تمرین</p>
+          <p class="card-desc">یادگیری زبان قدرتمند C++ با کامپایلر آنلاین</p>
           <div class="card-tags">
             <span class="tag">برنامه‌نویسی</span>
             <span class="tag">C++</span>
           </div>
-          <div class="card-meta">
-            <span>۰ تومان</span>
-            <a href="#" class="meta-link">جزئیات</a>
-          </div>
-          <a href="https://github.com/arshia-121/arshia-site/releases/download/cpp-v1/LearnCpp_Full.exe" class="btn-dl">⬇ دانلود پک</a>
+          <a href="https://github.com/arshia-121/arshia-site/releases/download/cpp-v1/LearnCpp_Full.exe" class="btn-dl">⬇ دانلود برنامه</a>
         </div>
       </div>
 
       <!-- کارت ۳: HTML -->
       <div class="product-card">
         <div class="card-top">
-          <h3 class="card-num">HTML</h3>
+          <h3 class="card-num" style="color: #94a3b8;">HTML</h3>
           <span class="card-badge soon">به زودی</span>
         </div>
         <div class="card-bottom">
@@ -243,11 +245,7 @@
             <span class="tag">وب</span>
             <span class="tag">HTML</span>
           </div>
-          <div class="card-meta">
-            <span>به زودی</span>
-            <a href="#" class="meta-link" style="color: #94a3b8;">جزئیات</a>
-          </div>
-          <button class="btn-dl disabled">به زودی</button>
+          <div class="btn-dl disabled">به زودی</div>
         </div>
       </div>
 
