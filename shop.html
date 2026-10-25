@@ -1,184 +1,134 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa" dir="rtl" data-theme="light" data-accent="indigo">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>فروشگاه | عرشیا دانش‌آرا</title>
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Vazirmatn', sans-serif;
-      background-color: #f0f4f1;
-      color: #1e293b;
-      margin: 0;
-      padding: 0;
-    }
-    .shop-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
-    .shop-header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    .shop-header h1 {
-      color: #16a34a;
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
-    .shop-header p {
-      color: #64748b;
-      font-size: 1.1rem;
-    }
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 20px;
-    }
-    .product-card {
-      background: #ffffff;
-      border-radius: 16px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-      padding: 30px;
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border: 1px solid #e5e7eb;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: relative;
-      overflow: hidden;
-    }
-    .product-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-    }
-    .product-icon {
-      font-size: 50px;
-      margin-bottom: 15px;
-    }
-    .product-title {
-      color: #1e293b;
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-    .product-desc {
-      color: #64748b;
-      font-size: 0.95rem;
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-    .btn-download {
-      display: inline-block;
-      padding: 12px 24px;
-      background: #16a34a;
-      color: white;
-      text-decoration: none;
-      border-radius: 10px;
-      font-weight: bold;
-      font-size: 1rem;
-      transition: background 0.3s;
-    }
-    .btn-download:hover {
-      background: #15803d;
-    }
-    /* استایل‌های مخصوص کارت C++ */
-    .card-cpp .btn-download {
-      background: #8b5cf6;
-    }
-    .card-cpp .btn-download:hover {
-      background: #7c3aed;
-    }
-    /* استایل‌های مخصوص کارت HTML (به زودی) */
-    .card-html {
-      opacity: 0.8;
-    }
-    .card-html .btn-download {
-      background: #94a3b8;
-      cursor: not-allowed;
-      pointer-events: none; /* غیرفعال کردن کلیک */
-    }
-    .badge-soon {
-      position: absolute;
-      top: 15px;
-      left: -30px;
-      background: #f97316;
-      color: white;
-      padding: 5px 35px;
-      font-size: 0.8rem;
-      font-weight: bold;
-      transform: rotate(-45deg);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-    .back-nav {
-      text-align: center;
-      margin-top: 50px;
-    }
-    .back-nav a {
-      color: #16a34a;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1.1rem;
-    }
-  </style>
+  <meta name="description" content="برنامه‌های آموزشی ساخته شده توسط عرشیا دانش‌آرا">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/card.css">
+  <script>
+    (function () {
+      document.documentElement.classList.add("js");
+      try {
+        var root = document.documentElement;
+        var store = window.localStorage;
+        var lang = store.getItem("arshia.lang") === "en" ? "en" : "fa";
+        var theme = store.getItem("arshia.theme");
+        if (theme !== "light" && theme !== "dark") theme = "light";
+        var accent = store.getItem("arshia.accent") || "indigo";
+        root.lang = lang;
+        root.dir = lang === "fa" ? "rtl" : "ltr";
+        root.dataset.theme = theme;
+        root.dataset.accent = accent;
+      } catch (error) { /* no storage available */ }
+    })();
+  </script>
 </head>
-<body>
+<body data-page="shop">
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">پرش به محتوای اصلی</a>
 
-  <div class="shop-container">
-    <header class="shop-header">
-      <h1>🛍️ فروشگاه برنامه‌ها</h1>
-      <p>برنامه‌های آموزشی ساخته شده توسط عرشیا دانش‌آرا</p>
+  <div class="site-wrap">
+    <!-- هدر اصلی سایت (دقیقا مثل صفحه اصلی) -->
+    <header class="profile-head">
+      <div class="profile-tools">
+        <button type="button" class="icon-btn lang-btn" data-toggle-lang data-i18n-aria="a11y.lang" aria-label="تغییر زبان سایت">EN</button>
+      </div>
+
+      <div class="avatar" aria-hidden="true">👦</div>
+      <h1 class="profile-name" data-i18n="profile.name">عرشیا</h1>
+      <p class="profile-tagline" data-i18n="profile.tagline">دانش‌آموز پایه اول متوسطه</p>
+
+      <nav class="nav" id="site-nav" aria-label="ناوبری اصلی">
+        <a href="index.html" data-nav="home" data-i18n="nav.home">خانه</a>
+        <a href="shop.html" data-nav="shop" data-i18n="nav.shop">فروشگاه</a>
+        <a href="blog.html" data-nav="blog" data-i18n="nav.blog">بلاگ</a>
+      </nav>
     </header>
 
-    <div class="product-grid">
-      
-      <!-- ۱. کارت دوره پایتون -->
-      <div class="product-card">
-        <div>
-          <div class="product-icon">🐍</div>
-          <h2 class="product-title">دوره آموزش پایتون</h2>
-          <p class="product-desc">
-            یادگیری زبان پایتون از صفر تا صد با محیط کدنویسی اختصاصی، تمرین‌های تعاملی و سیستم پیشرفت.
-          </p>
+    <main class="card-body" id="main">
+      <section class="card-section">
+        <div class="card-section-head" style="margin-bottom: 20px;">
+          <h2 style="color: #4c1d95; font-size: 1.8rem;">🛍️ برنامه‌های من</h2>
         </div>
-        <!-- لینک دانلود پایتون -->
-        <a href="https://github.com/arshia-121/arshia-site/releases/download/v1/Learn-Python.exe" class="btn-download" target="_blank">⬇️ دانلود برنامه (Windows)</a>
-      </div>
+        
+        <!-- گرید کارت‌ها -->
+        <div class="product-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px;">
+          
+          <!-- کارت ۱: پایتون -->
+          <div style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee; display: flex; flex-direction: column;">
+            <div style="background: #f8f6ff; padding: 30px; text-align: center; position: relative; border-bottom: 1px solid #eee;">
+              <div style="position: absolute; top: 15px; right: 15px; background: #6d28d9; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold;">رایگان</div>
+              <h3 style="margin: 0; font-size: 3rem; font-weight: 800; color: #6d28d9;">14</h3>
+            </div>
+            <div style="padding: 20px; text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <h4 style="margin: 0 0 8px 0; font-size: 1.2rem; color: #1e293b; font-weight: bold;">پک آموزش ۱۴ درسی پایتون</h4>
+                <p style="margin: 0 0 15px 0; color: #64748b; font-size: 0.9rem; line-height: 1.5;">۱۴ درس پایتون؛ از صفر تا ساخت اولین برنامه</p>
+                <div style="display: flex; gap: 8px; justify-content: center; margin-bottom: 20px;">
+                  <span style="background: #f1f5f9; color: #475569; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem;">پایتون</span>
+                  <span style="background: #f1f5f9; color: #475569; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem;">آموزش</span>
+                </div>
+              </div>
+              <a href="https://github.com/arshia-121/arshia-site/releases/download/v1/Learn-Python.exe" style="display: block; width: 100%; padding: 12px; background: linear-gradient(135deg, #7c3aed, #6d28d9); color: white; text-decoration: none; border-radius: 12px; font-weight: bold; transition: opacity 0.3s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1">⬇ دانلود پک</a>
+            </div>
+          </div>
 
-      <!-- ۲. کارت دوره C++ -->
-      <div class="product-card card-cpp">
-        <div>
-          <div class="product-icon">🐱‍💻</div>
-          <h2 class="product-title">دوره آموزش C++</h2>
-          <p class="product-desc">
-            یادگیری زبان قدرتمند C++ با قابلیت کامپایل آنلاین کد، درس‌های تصویری و سیستم قفل درس‌ها.
-          </p>
+          <!-- کارت ۲: C++ -->
+          <div style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee; display: flex; flex-direction: column;">
+            <div style="background: #f8f6ff; padding: 30px; text-align: center; position: relative; border-bottom: 1px solid #eee;">
+              <div style="position: absolute; top: 15px; right: 15px; background: #6d28d9; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold;">رایگان</div>
+              <h3 style="margin: 0; font-size: 3rem; font-weight: 800; color: #6d28d9;">C++</h3>
+            </div>
+            <div style="padding: 20px; text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <h4 style="margin: 0 0 8px 0; font-size: 1.2rem; color: #1e293b; font-weight: bold;">دوره آموزش C++</h4>
+                <p style="margin: 0 0 15px 0; color: #64748b; font-size: 0.9rem; line-height: 1.5;">یادگیری زبان قدرتمند C++ با کامپایلر آنلاین</p>
+                <div style="display: flex; gap: 8px; justify-content: center; margin-bottom: 20px;">
+                  <span style="background: #f1f5f9; color: #475569; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem;">C++</span>
+                  <span style="background: #f1f5f9; color: #475569; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem;">برنامه‌نویسی</span>
+                </div>
+              </div>
+              <a href="https://github.com/arshia-121/arshia-site/releases/download/cpp-v1/LearnCpp_Full.exe" style="display: block; width: 100%; padding: 12px; background: linear-gradient(135deg, #7c3aed, #6d28d9); color: white; text-decoration: none; border-radius: 12px; font-weight: bold; transition: opacity 0.3s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1">⬇ دانلود برنامه</a>
+            </div>
+          </div>
+
+          <!-- کارت ۳: HTML (به زودی) -->
+          <div style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee; display: flex; flex-direction: column; opacity: 0.9;">
+            <div style="background: #f8f6ff; padding: 30px; text-align: center; position: relative; border-bottom: 1px solid #eee;">
+              <div style="position: absolute; top: 15px; right: 15px; background: #94a3b8; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold;">به زودی</div>
+              <h3 style="margin: 0; font-size: 2.5rem; font-weight: 800; color: #94a3b8;">HTML</h3>
+            </div>
+            <div style="padding: 20px; text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <h4 style="margin: 0 0 8px 0; font-size: 1.2rem; color: #1e293b; font-weight: bold;">دوره آموزش HTML</h4>
+                <p style="margin: 0 0 15px 0; color: #64748b; font-size: 0.9rem; line-height: 1.5;">یادگیری زبان پایه وب برای ساخت صفحات سایت</p>
+                <div style="display: flex; gap: 8px; justify-content: center; margin-bottom: 20px;">
+                  <span style="background: #f1f5f9; color: #475569; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem;">وب</span>
+                  <span style="background: #f1f5f9; color: #475569; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem;">HTML</span>
+                </div>
+              </div>
+              <div style="display: block; width: 100%; padding: 12px; background: #e2e8f0; color: #94a3b8; text-align: center; border-radius: 12px; font-weight: bold; cursor: not-allowed;">به زودی</div>
+            </div>
+          </div>
+
         </div>
-        <!-- لینک دانلود C++ -->
-        <a href="https://github.com/arshia-121/arshia-site/releases/download/cpp-v1/LearnCpp_Full.exe" class="btn-download" target="_blank">⬇️ دانلود برنامه (Windows)</a>
-      </div>
+      </section>
+    </main>
 
-      <!-- ۳. کارت دوره HTML (به زودی) -->
-      <div class="product-card card-html">
-        <div class="badge-soon">به زودی</div>
-        <div>
-          <div class="product-icon">🌐</div>
-          <h2 class="product-title">دوره آموزش HTML</h2>
-          <p class="product-desc">
-            یادگیری زبان پایه وب برای ساخت صفحات سایت. این برنامه شامل درس‌های تعاملی و محیط کدنویسی خواهد بود.
-          </p>
-        </div>
-        <a href="#" class="btn-download">⏳ در حال ساخت...</a>
-      </div>
-
-    </div>
-
-    <div class="back-nav">
-      <a href="index.html">⬅ بازگشت به صفحه اصلی</a>
-    </div>
+    <!-- فوتر اصلی سایت -->
+    <footer class="card-footer">
+      <div>© <span data-year>۱۴۰۵</span> — <span data-i18n="footer.madeBy">ساخته شده با ❤️ توسط عرشیا دانش‌آرا</span></div>
+      <div class="made-with" data-i18n="footer.powered">تولید شده با DeepSeek</div>
+    </footer>
   </div>
 
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/app.js"></script>
 </body>
 </html>
