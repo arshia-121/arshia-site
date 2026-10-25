@@ -4,252 +4,212 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>فروشگاه | عرشیا دانش‌آرا</title>
+  <meta name="description" content="برنامه‌های آموزشی ساخته شده توسط عرشیا دانش‌آرا">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="assets/css/card.css">
-  
+  <script>
+    (function () {
+      document.documentElement.classList.add("js");
+      try {
+        var root = document.documentElement;
+        var store = window.localStorage;
+        var lang = store.getItem("arshia.lang") === "en" ? "en" : "fa";
+        var theme = store.getItem("arshia.theme");
+        if (theme !== "light" && theme !== "dark") theme = "light";
+        var accent = store.getItem("arshia.accent") || "indigo";
+        root.lang = lang;
+        root.dir = lang === "fa" ? "rtl" : "ltr";
+        root.dataset.theme = theme;
+        root.dataset.accent = accent;
+      } catch (error) { /* no storage available */ }
+    })();
+  </script>
   <style>
-    body {
-      font-family: 'Vazirmatn', sans-serif;
-      background-color: #f8f9fc; /* رنگ پس زمینه ملایم */
-      margin: 0;
-      padding: 0;
-    }
-    
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
-
-    /* هدر بالای صفحه */
-    .shop-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 30px;
-      border-bottom: 1px solid #e5e7eb;
-      padding-bottom: 15px;
-    }
-
-    /* تنظیمات گرید به صورت ۳ ستون ثابت (دقیقا مثل عکس) */
-    .product-grid {
+    /* استایل اختصاصی برای این ۳ کارت که دقیقا مثل عکس باشه */
+    .shop-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
+      grid-template-columns: repeat(3, 1fr); /* دقیقا 3 ستون */
+      gap: 20px;
+      margin-top: 20px;
     }
-
-    /* ریسپانسیو برای موبایل (که توی گوشی زیر هم برن) */
-    @media (max-width: 900px) {
-      .product-grid { grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 800px) {
+      .shop-grid { grid-template-columns: 1fr; } /* توی موبایل زیر هم */
     }
-    @media (max-width: 600px) {
-      .product-grid { grid-template-columns: 1fr; }
-    }
-
-    /* استایل دقیق کارت‌ها */
-    .product-card {
+    .shop-card {
       background: #fff;
       border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+      border: 1px solid #f1f1f1;
       display: flex;
       flex-direction: column;
-      border: 1px solid #f1f1f1;
     }
-
-    /* بخش بالایی کارت (رنگ بنفش روشن) */
-    .card-top {
-      background: #f4effc;
-      padding: 30px 20px;
+    .shop-card-top {
+      background: #f4effc; /* رنگ بنفش روشن دقیقا مثل عکس */
+      padding: 25px 20px;
       position: relative;
       text-align: center;
-      height: 120px;
+      height: 110px;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
     }
+    /* دایره های پس زمینه */
+    .shop-card-top::before {
+      content: ''; position: absolute; top: -50px; right: -50px;
+      width: 150px; height: 150px; background: rgba(255,255,255,0.4); border-radius: 50%;
+    }
+    .shop-card-top::after {
+      content: ''; position: absolute; bottom: -30px; left: -20px;
+      width: 100px; height: 100px; background: rgba(255,255,255,0.2); border-radius: 50%;
+    }
+    .shop-card-num {
+      font-size: 3rem; font-weight: 900; color: #4c1d95; margin: 0; z-index: 1; line-height: 1;
+    }
+    .shop-badge {
+      position: absolute; top: 15px; right: 15px;
+      background: #6d28d9; color: white; padding: 4px 12px;
+      border-radius: 20px; font-size: 0.8rem; font-weight: bold; z-index: 1;
+    }
+    .shop-badge.soon { background: #94a3b8; }
     
-    /* دایره‌های تزئینی پس‌زمینه */
-    .card-top::before {
-      content: '';
-      position: absolute;
-      top: -50px;
-      right: -50px;
-      width: 150px;
-      height: 150px;
-      background: rgba(255,255,255,0.5);
-      border-radius: 50%;
+    .shop-card-body {
+      padding: 20px; display: flex; flex-direction: column; flex: 1; text-align: center;
     }
-    .card-top::after {
-      content: '';
-      position: absolute;
-      bottom: -40px;
-      left: -20px;
-      width: 120px;
-      height: 120px;
-      background: rgba(255,255,255,0.3);
-      border-radius: 50%;
+    .shop-card-title {
+      font-size: 1.1rem; font-weight: 800; color: #1e293b; margin: 0 0 8px 0;
     }
-
-    /* متن بزرگ وسط کارت */
-    .card-num {
-      font-size: 3rem;
-      font-weight: 900;
-      color: #5b21b6;
-      margin: 0;
-      z-index: 1;
-      line-height: 1;
+    .shop-card-desc {
+      font-size: 0.85rem; color: #64748b; margin-bottom: 15px; line-height: 1.5; flex: 1;
     }
-
-    /* برچسب رایگان / به زودی */
-    .card-badge {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      background: #6d28d9;
-      color: white;
-      padding: 4px 14px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: bold;
-      z-index: 1;
+    .shop-tags {
+      display: flex; justify-content: center; gap: 8px; margin-bottom: 20px;
     }
-    .card-badge.soon { background: #94a3b8; }
-
-    /* بخش پایینی کارت (سفید) */
-    .card-bottom {
-      padding: 25px 20px;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-      text-align: center;
+    .shop-tag {
+      background: #f8f9fc; color: #475569; padding: 4px 12px; border-radius: 8px; font-size: 0.8rem;
     }
-
-    .card-title {
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: #1e293b;
-      margin: 0 0 10px 0;
+    .shop-price-row {
+      display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: bold; color: #4c1d95; margin-bottom: 15px;
     }
-
-    .card-desc {
-      font-size: 0.85rem;
-      color: #64748b;
-      margin-bottom: 20px;
-      line-height: 1.6;
-      flex: 1;
+    .shop-btn {
+      display: block; width: 100%; padding: 12px; background: #6d28d9; color: white;
+      text-align: center; text-decoration: none; border-radius: 12px; font-weight: bold; font-size: 0.95rem;
+      transition: 0.2s;
     }
-
-    /* تگ‌ها */
-    .card-tags {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin-bottom: 25px;
-    }
-    .tag {
-      background: #f1f5f9;
-      color: #475569;
-      padding: 4px 12px;
-      border-radius: 8px;
-      font-size: 0.8rem;
-      font-weight: 500;
-    }
-
-    /* دکمه دانلود بنفش */
-    .btn-dl {
-      display: block;
-      width: 100%;
-      padding: 14px;
-      background: #6d28d9;
-      color: white;
-      text-align: center;
-      text-decoration: none;
-      border-radius: 12px;
-      font-weight: 800;
-      font-size: 1rem;
-      transition: background 0.2s;
-      box-sizing: border-box;
-    }
-    .btn-dl:hover { background: #5b21b6; }
-    
-    /* دکمه غیرفعال (به زودی) */
-    .btn-dl.disabled {
-      background: #f1f5f9;
-      color: #94a3b8;
-      cursor: not-allowed;
-    }
+    .shop-btn:hover { background: #5b21b6; }
+    .shop-btn.disabled { background: #f1f5f9; color: #94a3b8; cursor: not-allowed; }
   </style>
 </head>
-<body data-page="shop">
-  <div class="container">
-    
-    <!-- هدر بالای صفحه -->
-    <header class="shop-header">
-      <h2 style="color: #5b21b6; font-size: 1.5rem; margin: 0; display: flex; align-items: center; gap: 10px;">
-        🛍️ برنامه‌های من
-      </h2>
-      <a href="index.html" style="color: #64748b; text-decoration: none; font-size: 0.95rem;">همه برنامه‌ها</a>
+<body data-page="home">
+  <a class="skip-link" href="#main">پرش به محتوای اصلی</a>
+
+  <div class="site-wrap">
+    <!-- هدر اصلی سایت خودت (دقیقا کپی شده از index.html) -->
+    <header class="profile-head">
+      <div class="profile-tools">
+        <button type="button" class="icon-btn lang-btn">EN</button>
+      </div>
+
+      <div class="avatar" aria-hidden="true">👦</div>
+      <h1 class="profile-name">عرشیا</h1>
+      <p class="profile-tagline">دانش‌آموز پایه اول متوسطه</p>
+
+      <nav class="nav" id="site-nav">
+        <a href="index.html">خانه</a>
+        <a href="shop.html" style="background: white; color: #1e1b4b;">فروشگاه</a>
+        <a href="blog.html">بلاگ</a>
+      </nav>
     </header>
 
-    <!-- گرید ۳ ستونه کارت‌ها -->
-    <div class="product-grid">
-      
-      <!-- کارت ۱: پایتون -->
-      <div class="product-card">
-        <div class="card-top">
-          <h3 class="card-num">۱۴</h3>
-          <span class="card-badge">رایگان</span>
+    <main class="card-body" id="main">
+      <section class="card-section">
+        <div class="card-section-head">
+          <h2 style="color: #4c1d95;">🛍️ فروشگاه برنامه‌ها</h2>
+          <a class="card-link" href="index.html">بازگشت به خانه</a>
         </div>
-        <div class="card-bottom">
-          <h4 class="card-title">پک آموزش ۱۴ درسی پایتون</h4>
-          <p class="card-desc">۱۴ درس پایتون؛ از صفر تا ساختن اولین برنامه</p>
-          <div class="card-tags">
-            <span class="tag">آموزش</span>
-            <span class="tag">پایتون</span>
-          </div>
-          <a href="https://github.com/arshia-121/arshia-site/releases/download/v1/Learn-Python.exe" class="btn-dl">⬇ دانلود پک</a>
-        </div>
-      </div>
+        <p style="color: #64748b; margin-bottom: 20px; font-size: 0.95rem;">
+          پک آموزش ۱۴ درسی پایتون رایگان است و با یک کلیک دانلود می‌شود. دو برنامه‌ی دیگر هم به‌زودی اضافه می‌شوند.
+        </p>
 
-      <!-- کارت ۲: C++ -->
-      <div class="product-card">
-        <div class="card-top">
-          <h3 class="card-num">C++</h3>
-          <span class="card-badge">رایگان</span>
-        </div>
-        <div class="card-bottom">
-          <h4 class="card-title">دوره آموزش C++</h4>
-          <p class="card-desc">یادگیری زبان قدرتمند C++ با کامپایلر آنلاین</p>
-          <div class="card-tags">
-            <span class="tag">برنامه‌نویسی</span>
-            <span class="tag">C++</span>
+        <!-- گرید ۳ کارت (دقیقا مثل عکس) -->
+        <div class="shop-grid">
+          
+          <!-- کارت ۱: پایتون -->
+          <div class="shop-card">
+            <div class="shop-card-top">
+              <h3 class="shop-card-num">۱۴</h3>
+              <span class="shop-badge">رایگان</span>
+            </div>
+            <div class="shop-card-body">
+              <h4 class="shop-card-title">پک آموزش ۱۴ درسی پایتون</h4>
+              <p class="shop-card-desc">۱۴ درس پایتون؛ از صفر تا ساختن اولین برنامه</p>
+              <div class="shop-tags">
+                <span class="shop-tag">آموزش</span>
+                <span class="shop-tag">پایتون</span>
+              </div>
+              <div class="shop-price-row">
+                <span>۰ تومان</span>
+                <span style="color: #3b82f6; cursor: pointer;">جزئیات</span>
+              </div>
+              <a href="https://github.com/arshia-121/arshia-site/releases/download/v1/Learn-Python.exe" class="shop-btn">⬇ دانلود پک</a>
+            </div>
           </div>
-          <a href="https://github.com/arshia-121/arshia-site/releases/download/cpp-v1/LearnCpp_Full.exe" class="btn-dl">⬇ دانلود برنامه</a>
-        </div>
-      </div>
 
-      <!-- کارت ۳: HTML -->
-      <div class="product-card">
-        <div class="card-top">
-          <h3 class="card-num" style="color: #94a3b8;">HTML</h3>
-          <span class="card-badge soon">به زودی</span>
-        </div>
-        <div class="card-bottom">
-          <h4 class="card-title">دوره آموزش HTML</h4>
-          <p class="card-desc">یادگیری زبان پایه وب برای ساخت صفحات سایت</p>
-          <div class="card-tags">
-            <span class="tag">وب</span>
-            <span class="tag">HTML</span>
+          <!-- کارت ۲: C++ -->
+          <div class="shop-card">
+            <div class="shop-card-top">
+              <h3 class="shop-card-num">C++</h3>
+              <span class="shop-badge">رایگان</span>
+            </div>
+            <div class="shop-card-body">
+              <h4 class="shop-card-title">دوره آموزش C++</h4>
+              <p class="shop-card-desc">یادگیری زبان قدرتمند C++ با کامپایلر آنلاین</p>
+              <div class="shop-tags">
+                <span class="shop-tag">برنامه‌نویسی</span>
+                <span class="shop-tag">C++</span>
+              </div>
+              <div class="shop-price-row">
+                <span>۰ تومان</span>
+                <span style="color: #3b82f6; cursor: pointer;">جزئیات</span>
+              </div>
+              <a href="https://github.com/arshia-121/arshia-site/releases/download/cpp-v1/LearnCpp_Full.exe" class="shop-btn">⬇ دانلود برنامه</a>
+            </div>
           </div>
-          <div class="btn-dl disabled">به زودی</div>
-        </div>
-      </div>
 
-    </div>
+          <!-- کارت ۳: HTML -->
+          <div class="shop-card">
+            <div class="shop-card-top">
+              <h3 class="shop-card-num" style="color: #94a3b8;">HTML</h3>
+              <span class="shop-badge soon">به زودی</span>
+            </div>
+            <div class="shop-card-body">
+              <h4 class="shop-card-title">دوره آموزش HTML</h4>
+              <p class="shop-card-desc">یادگیری زبان پایه وب برای ساخت صفحات سایت</p>
+              <div class="shop-tags">
+                <span class="shop-tag">وب</span>
+                <span class="shop-tag">HTML</span>
+              </div>
+              <div class="shop-price-row">
+                <span>۰ تومان</span>
+                <span style="color: #94a3b8;">جزئیات</span>
+              </div>
+              <div class="shop-btn disabled">به زودی</div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </main>
+
+    <footer class="card-footer">
+      <div>© <span data-year>۱۴۰۵</span> — ساخته شده با ❤️ توسط عرشیا دانش‌آرا</div>
+      <div class="made-with">تولید شده با DeepSeek</div>
+    </footer>
   </div>
 </body>
 </html>
