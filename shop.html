@@ -5,9 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>فروشگاه | عرشیا دانش‌آرا</title>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css">
   <style>
-    /* استایل اختصاصی صفحه فروشگاه */
     body {
       font-family: 'Vazirmatn', sans-serif;
       background-color: #f0f4f1;
@@ -37,7 +35,6 @@
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 20px;
-      justify-content: center;
     }
     .product-card {
       background: #ffffff;
@@ -50,6 +47,8 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      position: relative;
+      overflow: hidden;
     }
     .product-card:hover {
       transform: translateY(-5px);
@@ -74,7 +73,7 @@
     .btn-download {
       display: inline-block;
       padding: 12px 24px;
-      background: #f97316; /* رنگ نارنجی برای HTML */
+      background: #16a34a;
       color: white;
       text-decoration: none;
       border-radius: 10px;
@@ -83,7 +82,35 @@
       transition: background 0.3s;
     }
     .btn-download:hover {
-      background: #ea580c;
+      background: #15803d;
+    }
+    /* استایل‌های مخصوص کارت C++ */
+    .card-cpp .btn-download {
+      background: #8b5cf6;
+    }
+    .card-cpp .btn-download:hover {
+      background: #7c3aed;
+    }
+    /* استایل‌های مخصوص کارت HTML (به زودی) */
+    .card-html {
+      opacity: 0.8;
+    }
+    .card-html .btn-download {
+      background: #94a3b8;
+      cursor: not-allowed;
+      pointer-events: none; /* غیرفعال کردن کلیک */
+    }
+    .badge-soon {
+      position: absolute;
+      top: 15px;
+      left: -30px;
+      background: #f97316;
+      color: white;
+      padding: 5px 35px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      transform: rotate(-45deg);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
     .back-nav {
       text-align: center;
@@ -107,18 +134,43 @@
 
     <div class="product-grid">
       
-      <!-- کارت دوره HTML -->
+      <!-- ۱. کارت دوره پایتون -->
       <div class="product-card">
+        <div>
+          <div class="product-icon">🐍</div>
+          <h2 class="product-title">دوره آموزش پایتون</h2>
+          <p class="product-desc">
+            یادگیری زبان پایتون از صفر تا صد با محیط کدنویسی اختصاصی، تمرین‌های تعاملی و سیستم پیشرفت.
+          </p>
+        </div>
+        <!-- لینک دانلود پایتون -->
+        <a href="https://github.com/arshia-121/arshia-site/releases/download/v1/Learn-Python.exe" class="btn-download" target="_blank">⬇️ دانلود برنامه (Windows)</a>
+      </div>
+
+      <!-- ۲. کارت دوره C++ -->
+      <div class="product-card card-cpp">
+        <div>
+          <div class="product-icon">🐱‍💻</div>
+          <h2 class="product-title">دوره آموزش C++</h2>
+          <p class="product-desc">
+            یادگیری زبان قدرتمند C++ با قابلیت کامپایل آنلاین کد، درس‌های تصویری و سیستم قفل درس‌ها.
+          </p>
+        </div>
+        <!-- لینک دانلود C++ -->
+        <a href="https://github.com/arshia-121/arshia-site/releases/download/cpp-v1/LearnCpp_Full.exe" class="btn-download" target="_blank">⬇️ دانلود برنامه (Windows)</a>
+      </div>
+
+      <!-- ۳. کارت دوره HTML (به زودی) -->
+      <div class="product-card card-html">
+        <div class="badge-soon">به زودی</div>
         <div>
           <div class="product-icon">🌐</div>
           <h2 class="product-title">دوره آموزش HTML</h2>
           <p class="product-desc">
-            یادگیری زبان پایه وب برای ساخت صفحات سایت. این برنامه شامل درس‌های تعاملی، تمرین و محیط کدنویسی است.
+            یادگیری زبان پایه وب برای ساخت صفحات سایت. این برنامه شامل درس‌های تعاملی و محیط کدنویسی خواهد بود.
           </p>
         </div>
-        
-        <!-- لینک دانلود رو به زودی اینجا میذاری -->
-        <a href="#" class="btn-download" target="_blank">⬇️ دانلود برنامه (Windows)</a>
+        <a href="#" class="btn-download">⏳ در حال ساخت...</a>
       </div>
 
     </div>
