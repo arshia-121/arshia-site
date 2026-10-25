@@ -175,6 +175,19 @@ window.I18N = {
     "shop.faq4.a": "بله، برای پروژه‌های کوچک پایتون پیام بدهید تا درباره‌ی زمان، هزینه و جزئیات صحبت کنیم.",
     "shop.deliveryNote": "دانلود مستقیم و رایگان؛ بدون ثبت‌نام.",
 
+    // کلیدهای جدید برای کارت‌های فروشگاه
+    "shop.free": "رایگان",
+    "shop.pyTitle": "پک آموزش ۱۴ درسی پایتون",
+    "shop.pyDesc": "۱۴ درس پایتون؛ از صفر تا ساختن اولین برنامه",
+    "shop.tagEdu": "آموزش",
+    "shop.cppTitle": "دوره آموزش C++",
+    "shop.cppDesc": "یادگیری زبان قدرتمند C++ با کامپایلر آنلاین",
+    "shop.tagProg": "برنامه‌نویسی",
+    "shop.dlCpp": "⬇ دانلود برنامه",
+    "shop.htmlTitle": "دوره آموزش HTML",
+    "shop.htmlDesc": "یادگیری زبان پایه وب برای ساخت صفحات سایت",
+    "shop.tagWeb": "وب",
+
     "blog.kicker": "بلاگ",
     "blog.title": "نوشته‌ها",
     "blog.lead": "یادداشت‌هایی کوتاه از یادگیری پایتون، ساخت پروژه و اشتباه‌هایی که خودم مرتکب شده‌ام.",
@@ -395,6 +408,19 @@ window.I18N = {
     "shop.faq4.q": "Do you take custom projects?",
     "shop.faq4.a": "Yes — message me about small Python projects and we can talk through scope, time and price.",
     "shop.deliveryNote": "Free direct download, no sign-up.",
+
+    // New keys for shop cards
+    "shop.free": "Free",
+    "shop.pyTitle": "Python 14-Lesson Pack",
+    "shop.pyDesc": "14 Python lessons; from zero to building your first app",
+    "shop.tagEdu": "Education",
+    "shop.cppTitle": "C++ Course",
+    "shop.cppDesc": "Learn the powerful C++ language with an online compiler",
+    "shop.tagProg": "Programming",
+    "shop.dlCpp": "⬇ Download App",
+    "shop.htmlTitle": "HTML Course",
+    "shop.htmlDesc": "Learn the basic web language to build website pages",
+    "shop.tagWeb": "Web",
 
     "blog.kicker": "Blog",
     "blog.title": "Writing",
