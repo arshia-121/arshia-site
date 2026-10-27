@@ -174,6 +174,7 @@ window.I18N = {
     "shop.faq4.q": "پروژه‌ی اختصاصی هم قبول می‌کنید؟",
     "shop.faq4.a": "بله، برای پروژه‌های کوچک پایتون پیام بدهید تا درباره‌ی زمان، هزینه و جزئیات صحبت کنیم.",
     "shop.deliveryNote": "دانلود مستقیم و رایگان؛ بدون ثبت‌نام.",
+
     "shop.num14": "۱۴",
     "shop.free": "رایگان",
     "shop.soon": "به زودی",
@@ -255,7 +256,7 @@ window.I18N = {
     "home.aboutText": "Hi! I'm Arshia Danesh Ara, a curious teenager interested in computers and programming. These days I'm learning Python, and my goal is to become a better programmer. Besides programming, I'm learning French because I want to read academic sources and papers in their original language. I'm always looking to learn something new and get better at what I do.",
     "home.hobbiesTitle": "💜 My interests",
     "home.hobbyViolin": "Playing violin",
-    "home.hobbyIQ": "IQ puzzles",
+    "home.hobbyIQ": "Aikido", 
     "home.hobbyFrench": "Learning French",
     "home.hobbyProgramming": "Programming on the computer",
     "home.hobbyBooks": "Science books",
@@ -411,6 +412,7 @@ window.I18N = {
     "shop.faq4.q": "Do you take custom projects?",
     "shop.faq4.a": "Yes — message me about small Python projects and we can talk through scope, time and price.",
     "shop.deliveryNote": "Free direct download, no sign-up.",
+
     "shop.num14": "14",
     "shop.free": "Free",
     "shop.soon": "Coming soon",
